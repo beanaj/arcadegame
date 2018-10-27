@@ -19,6 +19,7 @@ Enemy.prototype.update = function (dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    //Get the speed
     this.x += speedCalculator(this.movementSpeed) * dt;
     if (this.x > 606) {
         this.x = -120;
@@ -39,6 +40,7 @@ let Player = function (x, y) {
     //Establish position
     this.x = x;
     this.y = y;
+    //Establish whether dead or winning
     this.dead = false;
     this.victory = false;
 };
@@ -59,6 +61,7 @@ Player.prototype.render = function () {
 };
 
 Player.prototype.handleInput = function (direction) {
+    //Move between tiles depending on direction
     switch (direction) {
         case "left":
             if (this.x > 100) {
@@ -83,6 +86,7 @@ Player.prototype.handleInput = function (direction) {
     }
 };
 
+//Reset player position and characteristics
 Player.prototype.reset = function () {
     player.x = columns[2];
     player.y = rows[4];
@@ -90,6 +94,7 @@ Player.prototype.reset = function () {
     player.victory = false;
 };
 
+//Display a win message if make it to the water
 Player.prototype.win = function() {
     window.alert("YOU WIN!!!");
 };
@@ -99,14 +104,18 @@ Player.prototype.win = function() {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
+//Initialize the rows coordinates
 let rows = [];
 for (let i = 0; i < 6; i++) {
     rows[i] = calculateRow(i + 1);
 }
+//Initialize the column coordinates
 let columns = [];
 for (let i = 0; i < 5; i++) {
     columns[i] = calculateColumn(i);
 }
+
+//Initialize the players and enemies
 let player = new Player(columns[2], rows[4]);
 let allEnemies = [
     new Enemy(columns[0], rows[0], "slow"),
@@ -134,14 +143,17 @@ document.addEventListener('keyup', function (e) {
 
 //Helper Functions
 
+//Calculates the row coordinate based on square index
 function calculateRow(row) {
     return (row * 83) - 20;
 }
 
+//Calculate the column coordinate based on square index
 function calculateColumn(col) {
     return col * 101;
 }
 
+//Calculate speed based on entry string
 function speedCalculator(speed) {
     switch (speed) {
         case "slow":
@@ -153,6 +165,7 @@ function speedCalculator(speed) {
     }
 }
 
+//Check to see if the player has collided on the x axis
 function collideCol(player, enemy) {
     let e = {
         lowX: enemy.x,
@@ -168,10 +181,12 @@ function collideCol(player, enemy) {
     } else return p.hiX > e.lowX && p.hiX < e.hiX;
 }
 
+//Check to see if the player has collided on the y axis
 function collideRow(player, enemy) {
     return player.y === enemy.y;
 }
 
+//Check to see if the player has won
 function hasWon(player) {
     if(player.y<=-20){
         return true;

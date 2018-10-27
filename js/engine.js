@@ -92,6 +92,8 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
+
+        //Check if the player has won or died
         player.update();
         if(player.dead){
             console.log(player);
@@ -170,7 +172,6 @@ var Engine = (function(global) {
      */
     function reset() {
         // noop
-        init();
     }
 
     /* Go ahead and load all of the images we know we're going to need to
