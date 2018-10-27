@@ -1,6 +1,23 @@
-frontend-nanodegree-arcade-game
+Ladybug Arcade Game
 ===============================
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+By: Andrew Jacobsen
+## Table of Contents
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+* [Instructions](#instructions)
+* [Attributions](#attributions)
+
+## Instructions
+To Run:
+
+1.) Clone the repository
+
+2.) When within the repository folder, open index.html using a browser.
+
+## Attributions
+
+Base project code, engine, HTML, CSS, Javascript taken from Udacity here:
+
+https://github.com/udacity/frontend-nanodegree-arcade-game
+
+
