@@ -63,7 +63,6 @@ var Engine = (function(global) {
      * game loop.
      */
     function init() {
-        reset();
         lastTime = Date.now();
         main();
     }
@@ -94,6 +93,15 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update();
+        if(player.dead){
+            console.log(player);
+            player.reset();
+        }
+
+        if(player.victory){
+            player.win();
+            player.reset();
+        }
     }
 
     /* This function initially draws the "game level", it will then call
@@ -119,7 +127,7 @@ var Engine = (function(global) {
             row, col;
         
         // Before drawing, clear existing canvas
-        ctx.clearRect(0,0,canvas.width,canvas.height)
+        ctx.clearRect(0,0,canvas.width,canvas.height);
 
         /* Loop through the number of rows and columns we've defined above
          * and, using the rowImages array, draw the correct image for that
@@ -162,6 +170,7 @@ var Engine = (function(global) {
      */
     function reset() {
         // noop
+        init();
     }
 
     /* Go ahead and load all of the images we know we're going to need to
@@ -173,7 +182,7 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-cat-girl.png'
     ]);
     Resources.onReady(init);
 
