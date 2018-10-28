@@ -1,3 +1,4 @@
+'use strict';
 // Enemies our player must avoid
 let Enemy = function (x, y, movSpd) {
     // Variables applied to each of our instances go here,
@@ -88,10 +89,10 @@ Player.prototype.handleInput = function (direction) {
 
 //Reset player position and characteristics
 Player.prototype.reset = function () {
-    player.x = columns[2];
-    player.y = rows[4];
-    player.dead = false;
-    player.victory = false;
+    this.x = columns[2];
+    this.y = rows[4];
+    this.dead = false;
+    this.victory = false;
 };
 
 //Display a win message if make it to the water
