@@ -47,10 +47,10 @@ let Player = function (x, y) {
 };
 
 Player.prototype.update = function (dt) {
-    this.victory = hasWon(player);
+    this.victory = hasWon(this);
     allEnemies.forEach((enemy) => {
         //Check if the player has collided with an enemy
-        if (collideCol(player, enemy) && collideRow(player, enemy)) {
+        if (collideCol(this, enemy) && collideRow(this, enemy)) {
             //Collided and dead
             this.dead = true;
         }
